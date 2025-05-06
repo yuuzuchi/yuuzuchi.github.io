@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Olympics Data Visualization</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <div class="dashboard">
+        <section id="body-stats" class="section">
+            <h2>Body Statistics</h2>
+            <div class="stat-controls">
+                <select id="stat-select">
+                    <option value="height">Height</option>
+                    <option value="weight">Weight</option>
+                    <option value="age">Age</option>
+                </select>
+            </div>
+            <div class="visualization-container">
+                <div id="stats-by-year"></div>
+                <div id="women-participation"></div>
+            </div>
+        </section>
+
+        <section id="country-stats" class="section">
+            <h2>Country Statistics</h2>
+            <div class="visualization-container">
+                <div id="medals-by-year"></div>
+                <input type="range" id="year-slider" min="1896" max="2016" value="2016" />
+                <div id="year-display">2016</div>
+            </div>
+        </section>
+
+        <section id="sport-stats" class="section">
+            <h2>Sport Statistics</h2>
+            <div class="stat-controls">
+                <select id="sport-select">
+                    <!-- Will be populated with sports from the data -->
+                </select>
+            </div>
+            <div class="visualization-container">
+                <div id="sport-records"></div>
+            </div>
+        </section>
+    </div>
+    <div id="tooltip" style="
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  pointer-events: none;
+  visibility: hidden;
+"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
