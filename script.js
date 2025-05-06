@@ -20,7 +20,7 @@ let womenParticipationChart = {};
 let medalsByYearChart = {};
 let sportRecordsChart = {};
 
-d3.csv("olympics_cleaned.csv").then(data => {
+d3.csv("/olympics_cleaned.csv").then(data => {
     // Parse numerical values
     data.forEach(d => {
         d.age = +d.age;
