@@ -29,7 +29,12 @@
             <h2>Country Statistics</h2>
             <div class="visualization-container">
                 <div id="medals-by-year"></div>
-                <input type="range" id="year-slider" min="1896" max="2016" value="2016" />
+                <div id="progress-bar">
+                    <div id="playpause">
+                        <button id="playpause-button">&#x23F5;&#xFE0E;</button>
+                    </div>
+                    <input type="range" id="year-slider" min="1896" max="2016" value="2016" />
+                </div>
                 <div id="year-display">2016</div>
             </div>
         </section>
@@ -40,6 +45,8 @@
                 <select id="sport-select">
                     <!-- Will be populated with sports from the data -->
                 </select>
+                <button id="prev-sport" title="Previous sport">Previous Sport</button>
+                <button id="next-sport" title="Next sport">Next Sport</button>
             </div>
             <div class="visualization-container">
                 <div id="sport-records"></div>
