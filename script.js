@@ -659,18 +659,17 @@ function updateMedalsByYear() {
         .attr("class", "medal-bar")
         .attr("y", d => y(d.team))
         .attr("height", y.bandwidth())
-        .attr("fill", d => getCountryColor(d.team)) // Use country-specific colors
+        .attr("fill", d => getCountryColor(d.team)) // country specific colors
         .attr("x", 0)
         .attr("width", 0)
-        .style("cursor", "pointer") // Set cursor style with !important
         .merge(bars)
         .transition()
         .duration(animDuration)
-        .ease(isPlaying ? d3.easeLinear : d3.easeCubic) // Add linear easing
+        .ease(isPlaying ? d3.easeLinear : d3.easeCubic) // linear to avoid jitteryness
         .attr("y", d => y(d.team))
         .attr("height", y.bandwidth())
         .attr("width", d => x(d.medals))
-        .attr("fill", d => getCountryColor(d.team)); // Use country-specific colors
+        .attr("fill", d => getCountryColor(d.team)); 
 
     bars.exit().transition().duration(animDuration).ease(d3.easeLinear).attr("width", 0).remove();
 
@@ -757,7 +756,6 @@ function updateMedalsByYear() {
 }
 
 function initializeSportRecords() {
-    // Create SVG
     const container = d3.select("#sport-records");
     const width = container.node().getBoundingClientRect().width;
     const height = 400;
@@ -780,7 +778,6 @@ function initializeSportRecords() {
     const y = d3.scaleLinear()
         .range([height - margin.top - margin.bottom, 0]);
 
-    // Create axes
     const xAxis = chartGroup.append("g")
         .attr("class", "x-axis axis")
         .attr("transform", `translate(0, ${height - margin.top - margin.bottom})`);
@@ -788,7 +785,7 @@ function initializeSportRecords() {
     const yAxis = chartGroup.append("g")
         .attr("class", "y-axis axis");
 
-    // Add axis labels
+    // axis labels
     chartGroup.append("text")
         .attr("class", "x-label")
         .attr("text-anchor", "middle")
@@ -804,7 +801,7 @@ function initializeSportRecords() {
         .attr("x", -(height - margin.top - margin.bottom) / 2)
         .text("Number of Athletes");
 
-    // Add chart title
+    // chart title
     chartGroup.append("text")
         .attr("class", "chart-title")
         .attr("text-anchor", "middle")
@@ -850,7 +847,7 @@ function populateSportDropdown() {
         sportSelect.appendChild(option);
     });
 
-    // Set initial sport to "All sports"
+    // initial sport "All sports"
     currentSport = 'All';
     sportSelect.value = 'All';
 }
@@ -986,7 +983,7 @@ function updateSportRecords() {
 
     circles.exit().remove();
 
-    // Update tooltip
+    //Update tooltip
     const tooltip = d3.select("#tooltip");
 
     chartGroup.selectAll(".data-point")
@@ -1039,10 +1036,4 @@ function updateSportRecords() {
     console.log(`Updated sport records chart for ${currentSport === 'All' ? 'all sports' : currentSport}`);
 }
 
-// Add window event listener to stop animation when tab is inactive
-window.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden' && isPlaying) {
-        togglePlayPause(); // Stop animation when tab is not visible
-    }
-});
 
