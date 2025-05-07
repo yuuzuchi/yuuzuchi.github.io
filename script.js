@@ -188,7 +188,7 @@ function startYearAnimation() {
     const yearDisplay = document.getElementById('year-display');
 
     // If at the end, start from beginning
-    console.log(currentYear, yearRange[1]);
+    //console.log(currentYear, yearRange[1]);
     if (currentYear >= yearRange[1] || currentYear === 0) {
         currentYear = yearRange[0];
         yearSlider.value = currentYear;
@@ -234,8 +234,6 @@ function findClosestOlympicYear(year) {
 
 function initializeVisualizations() {
     initializeStatsByYear();
-    initializeWomenParticipation();
-
     initializeMedalsByYear();
     initializeSportRecords();
 
@@ -244,7 +242,6 @@ function initializeVisualizations() {
 
 function updateVisualizations() {
     updateStatsByYear();
-    updateWomenParticipation();
     updateMedalsByYear();
     updateSportRecords();
 }
@@ -375,7 +372,7 @@ function updateStatsByYear() {
     const warLabels = chartGroup.selectAll(".war-label")
         .data(warPeriods);
 
-    console.log(`Current year: ${currentYear}`);
+    //console.log(`Current year: ${currentYear}`);
 
     warLabels.enter()
         .append("text")
@@ -536,14 +533,7 @@ function updateStatsByYear() {
             }
         });
 
-    console.log(`Updated stats by year chart with stat: ${currentStat}`);
-}
-
-function initializeWomenParticipation() {
-    // Create SVG
-}
-
-function updateWomenParticipation() {
+    //console.log(`Updated stats by year chart with stat: ${currentStat}`);
 }
 
 function initializeMedalsByYear() {
@@ -737,7 +727,7 @@ function updateMedalsByYear() {
     chartGroup.select(".total-countries-label")
         .attr("x", width - margin.left - margin.right - 10)
         .attr("y", height - margin.top - margin.bottom - 10)
-        .text(`Total countries with medals: ${medalsByCountry.size}`);
+        .text(`Total teams with medals: ${medalsByCountry.size}`);
 
     const titleText = currentYear === 0
         ? "All-time Olympic Medals by Team/Country (1896-2016)"
@@ -809,7 +799,7 @@ function initializeSportRecords() {
         .attr("y", -5)
         .text("Athletes by Olympic Year");
 
-    // Store chart elements for later use
+    //Store chart elements for later use
     sportRecordsChart = {
         svg: svg,
         x: x,
@@ -983,7 +973,6 @@ function updateSportRecords() {
 
     circles.exit().remove();
 
-    //Update tooltip
     const tooltip = d3.select("#tooltip");
 
     chartGroup.selectAll(".data-point")
@@ -1033,7 +1022,7 @@ function updateSportRecords() {
     chartGroup.select(".chart-title")
         .text(`${currentSport === 'All' ? 'All' : currentSport} Athletes by Olympic Year`);
 
-    console.log(`Updated sport records chart for ${currentSport === 'All' ? 'all sports' : currentSport}`);
+    //console.log(`Updated sport records chart for ${currentSport === 'All' ? 'all sports' : currentSport}`);
 }
 
 
