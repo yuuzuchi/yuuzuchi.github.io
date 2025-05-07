@@ -21,7 +21,6 @@ let medalsByYearChart = {};
 let sportRecordsChart = {};
 
 d3.csv("/olympics_cleaned.csv").then(data => {
-    // Parse numerical values
     data.forEach(d => {
         d.age = +d.age;
         d.height = +d.height;
@@ -33,10 +32,6 @@ d3.csv("/olympics_cleaned.csv").then(data => {
 
     initializeEventListeners();
     initializeVisualizations();
-
-
-    // Initialize visualizations
-    // TODO: Add visualization code here
 });
 
 function initializeEventListeners() {
@@ -65,9 +60,11 @@ function initializeEventListeners() {
         });
 
         yearDisplay.textContent = closestYear.year;
-        currentYear = +closestYear.year;
-        e.target.value = closestYear.year;
-        updateVisualizations();
+        if (currentYear !== closestYear.year) {
+            currentYear = +closestYear.year;
+            e.target.value = closestYear.year;
+            updateVisualizations();
+        }
     });
 
     // update stat when select changes
